@@ -1,0 +1,64 @@
+// ==========================================
+// landing-page-sass/scss/components/_stats.scss
+// Phần số liệu thống kê (Statistics Section) của Landing Page
+// ==========================================
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.stats-section {
+  padding: 80px 20px;
+  background: linear-gradient(135deg, var.$dark-bg 0%, var.$dark-surface 100%);
+  color: var.$white;
+  position: relative;
+
+  .stats-grid {
+    @include mix.grid-columns(4, 24px);
+
+    @include mix.responsive('tablet') {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mix.responsive('mobile') {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var.$border-radius-md;
+    padding: 32px 20px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    transition: var.$transition-standard;
+
+    &:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(26, 188, 156, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    &__icon {
+      font-size: 2.2rem;
+      color: var.$primary-color;
+      margin-bottom: 14px;
+    }
+
+    &__number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var.$white;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    &__label {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 500;
+    }
+  }
+}

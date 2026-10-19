@@ -1,0 +1,101 @@
+// ==========================================
+// landing-page-sass/scss/layout/_footer.scss
+// Footer 2 cột chuyên nghiệp với phân cấp dấu chấm (•)
+// ==========================================
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.footer {
+  background-color: var.$dark-bg;
+  color: var.$white;
+  padding: 60px 0 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  &__grid {
+    @include mix.flex-layout(space-between, flex-start);
+    gap: 40px;
+    margin-bottom: 40px;
+
+    @include mix.responsive('tablet') {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+
+  // Cột 1: Thông tin thương hiệu & Bản quyền
+  &__brand-col {
+    flex: 1;
+    max-width: 480px;
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var.$white;
+
+      span {
+        color: var.$primary-color;
+      }
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  // Cột 2: Danh sách liên kết phân cấp bằng dấu chấm (•)
+  &__links-col {
+    flex: 1;
+
+    h4 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var.$white;
+      font-weight: 700;
+    }
+
+    ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+
+      @include mix.responsive('mobile') {
+        grid-template-columns: 1fr;
+      }
+
+      li {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.95rem;
+
+        a {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          transition: var.$transition-standard;
+
+          &:hover {
+            color: var.$accent-color;
+            padding-left: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+}

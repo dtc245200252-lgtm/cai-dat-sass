@@ -10,7 +10,9 @@
     "sass:watch": "sass scss/:css/ --watch",
     "grid:build": "sass responsive-grid-sass/scss/:responsive-grid-sass/css/",
     "grid:watch": "sass responsive-grid-sass/scss/:responsive-grid-sass/css/ --watch",
-    "build": "npm run sass:single && npm run sass:build && npm run grid:build"
+    "landing:build": "sass landing-page-sass/scss/:landing-page-sass/css/",
+    "landing:watch": "sass landing-page-sass/scss/:landing-page-sass/css/ --watch",
+    "build": "npm run sass:single && npm run sass:build && npm run grid:build && npm run landing:build"
   },
   "keywords": ["sass", "scss", "css", "cli", "npm", "tutorial"],
   "author": "CodeGym Student",

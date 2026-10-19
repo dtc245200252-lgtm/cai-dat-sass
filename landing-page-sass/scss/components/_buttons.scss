@@ -1,0 +1,32 @@
+// ==========================================
+// landing-page-sass/scss/components/_buttons.scss
+// Các biến thể nút bấm tái sử dụng mixin button-base
+// ==========================================
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.btn {
+  @include mix.button-base(var.$primary-color, var.$text-light);
+
+  &--accent {
+    @include mix.button-base(var.$accent-color, var.$white);
+  }
+
+  &--outline {
+    background: transparent;
+    color: var.$white;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var.$white;
+      color: var.$white;
+    }
+  }
+
+  &--lg {
+    padding: 14px 34px;
+    font-size: 1.05rem;
+  }
+}

@@ -1,0 +1,36 @@
+// ==========================================
+// landing-page-sass/scss/base/_reset.scss
+// Reset CSS toàn cục, cấu hình cuộn trang mượt
+// ==========================================
+
+@use '../abstracts/variables' as var;
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var.$font-family-base;
+  background-color: var.$light-bg;
+  color: var.$text-main;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var.$container-max-width;
+  margin: 0 auto;
+  padding: 0 20px;
+}

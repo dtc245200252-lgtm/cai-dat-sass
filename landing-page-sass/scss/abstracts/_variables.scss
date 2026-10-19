@@ -1,0 +1,43 @@
+// ==========================================
+// landing-page-sass/scss/abstracts/_variables.scss
+// Biến màu sắc, khoảng cách, bóng đổ và kích thước
+// ==========================================
+
+// Color Palette
+$primary-color: #1abc9c;
+$primary-dark: #16a085;
+$primary-glow: rgba(26, 188, 156, 0.35);
+
+$accent-color: #f39c12;
+$accent-hover: #d35400;
+
+$dark-bg: #2c3e50;
+$dark-surface: #1a252f;
+$navbar-bg: rgba(30, 41, 59, 0.95);
+
+$light-bg: #f8fafc;
+$white: #ffffff;
+$text-main: #2c3e50;
+$text-muted: #64748b;
+$text-light: #ffffff;
+$border-color: #e2e8f0;
+
+// Typography
+$font-family-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-size-hero: 2.75rem;
+$font-size-section: 2.1rem;
+$font-size-title: 1.3rem;
+$font-size-body: 1rem;
+$font-size-sm: 0.875rem;
+
+// Layout & Spacing
+$container-max-width: 1200px;
+$section-padding: 70px 20px;
+$border-radius-sm: 6px;
+$border-radius-md: 12px;
+$border-radius-lg: 18px;
+
+// Shadows & Animations
+$shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+$shadow-hover: 0 20px 35px -5px rgba(0, 0, 0, 0.15), 0 10px 15px -5px rgba(26, 188, 156, 0.2);
+$transition-standard: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);

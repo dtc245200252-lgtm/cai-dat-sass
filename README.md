@@ -185,7 +185,33 @@ Dự án nằm tại thư mục [responsive-grid-sass/](file:///d:/M%E1%BA%B8%20
 
 ---
 
-## ⚡ 8. Tiện Ích Scripts Trong `package.json`
+## 🚀 8. Tái Cấu Trúc Toàn Bộ Landing Page Bằng Kiến Trúc SASS 7-1
+
+Dự án hoàn chỉnh đặt tại thư mục [landing-page-sass/](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/), tổng hợp lại 4 bài tập giao diện mẫu của CodeGym:
+
+1. **Navigation & Header** ([scss/layout/_navbar.scss](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/scss/layout/_navbar.scss) & [_header.scss](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/scss/layout/_header.scss)):
+   - Navbar cố định trên đỉnh, hiệu ứng kính mờ (glassmorphism blur 12px), đổi màu liên kết khi hover.
+   - Header banner có nền ảnh, hiệu ứng mờ đa tầng (`filter: blur(10px)`), overlay tương phản cao và nút kêu gọi hành động (CTA).
+2. **Sản phẩm nổi bật (Featured Products)** ([scss/components/_cards.scss](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/scss/components/_cards.scss)):
+   - Bố cục dạng lưới CSS Grid 3 cột (`@mixin grid-columns(3, 28px)`).
+   - Card sản phẩm có hình ảnh bo góc, hiệu ứng phóng to ảnh khi hover (`transform: scale(1.08)`), phân cấp nội dung bằng dấu chấm (`•`).
+3. **Số liệu thống kê (Statistics Section)** ([scss/components/_stats.scss](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/scss/components/_stats.scss)):
+   - 4 khối thẻ thống kê trực quan (15,000+ khách hàng, 99.8% hài lòng, 650+ dự án, hỗ trợ 24/7).
+   - Nền gradient tối sang trọng kết hợp icon màu neon nổi bật.
+4. **Footer 2 cột chuyên nghiệp** ([scss/layout/_footer.scss](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/landing-page-sass/scss/layout/_footer.scss)):
+   - Cột trái: Thông tin thương hiệu & bản quyền.
+   - Cột phải: Danh mục liên kết phân cấp bằng dấu chấm (`•`).
+
+### Lệnh biên dịch:
+```bash
+npm run landing:build
+# hoặc chế độ tự động theo dõi:
+npm run landing:watch
+```
+
+---
+
+## ⚡ 9. Tiện Ích Scripts Trong `package.json`
 
 Bạn có thể chạy trực tiếp thông qua `npm run`:
 - `npm run sass:single` : Biên dịch file đơn lẻ `styles.scss` -> `styles.css`.
@@ -194,6 +220,8 @@ Bạn có thể chạy trực tiếp thông qua `npm run`:
 - `npm run sass:watch` : Bật watch cả thư mục `scss/` -> `css/`.
 - `npm run grid:build` : Biên dịch dự án `responsive-grid-sass`.
 - `npm run grid:watch` : Bật watch dự án `responsive-grid-sass`.
+- `npm run landing:build` : Biên dịch dự án `landing-page-sass`.
+- `npm run landing:watch` : Bật watch dự án `landing-page-sass`.
 - `npm run build` : Biên dịch toàn bộ các dự án SCSS trong 1 lệnh duy nhất.
 
 ---

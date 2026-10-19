@@ -1,0 +1,22 @@
+// ==========================================
+// landing-page-sass/scss/main.scss
+// File điểm vào chính tổng hợp toàn bộ Landing Page theo chuẩn 7-1 SASS
+// ==========================================
+
+// 1. Abstracts (Biến & Mixins)
+@use 'abstracts/variables';
+@use 'abstracts/mixins';
+
+// 2. Base (Reset & Typography)
+@use 'base/reset';
+@use 'base/typography';
+
+// 3. Layout (Navbar, Header, Footer)
+@use 'layout/navbar';
+@use 'layout/header';
+@use 'layout/footer';
+
+// 4. Components (Buttons, Product Cards, Statistics)
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/stats';

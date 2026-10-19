@@ -1,0 +1,31 @@
+// ==========================================
+// landing-page-sass/scss/base/_typography.scss
+// Cấu hình typography, tiêu đề mục, đoạn văn
+// ==========================================
+
+@use '../abstracts/variables' as var;
+@use '../abstracts/mixins' as mix;
+
+.section-title {
+  text-align: center;
+  margin-bottom: 48px;
+
+  h2 {
+    font-size: var.$font-size-section;
+    font-weight: 800;
+    color: var.$dark-bg;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+
+    @include mix.responsive('mobile') {
+      font-size: 1.75rem;
+    }
+  }
+
+  p {
+    font-size: 1.05rem;
+    color: var.$text-muted;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
