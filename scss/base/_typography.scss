@@ -1,0 +1,18 @@
+// ==========================================
+// base/_typography.scss
+// Quản lý typography h1, h2 với các biến SASS
+// ==========================================
+
+h1 {
+  font-size: $font-large;
+  color: $text-color;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+h2 {
+  font-size: $font-medium;
+  color: $text-color;
+  margin-top: 0;
+  margin-bottom: 10px;
+}

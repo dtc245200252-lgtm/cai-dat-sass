@@ -1,20 +1,17 @@
 // ==========================================
 // components/_cards.scss
-// Component thẻ card tái sử dụng mixin box-shadow và nesting
+// Áp dụng mixin box-style vào component .card
 // ==========================================
 
 .card {
-  background: #ffffff;
-  border: 1px solid $border-color;
-  border-radius: 8px;
-  padding: 20px;
+  @include box-style;
   margin-bottom: 20px;
-  @include box-shadow;
+  border: 1px solid $border-color;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.12);
+    box-shadow: 4px 6px 16px rgba(0, 0, 0, 0.15);
   }
 
   &__title {

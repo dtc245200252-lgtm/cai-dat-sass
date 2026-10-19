@@ -3,30 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kết Quả Chuyển Đổi CSS Sang SASS Chuẩn | CodeGym</title>
+  <title>Tối Ưu CSS Với Mixins & Biến Trong SASS | CodeGym</title>
   <!-- Nhúng trực tiếp file CSS được biên dịch từ cấu trúc SASS chuẩn -->
   <link rel="stylesheet" href="css/main.css">
   <style>
-    /* Style bổ trợ nhỏ cho trang so sánh */
-    .header-bar {
-      background: #0056b3;
-      color: white;
-      padding: 16px 0;
-      margin-bottom: 24px;
+    /* Thanh bar phụ hỗ trợ điều hướng */
+    .top-nav {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 12px 0;
+      border-bottom: 1px solid #334155;
     }
-    .header-bar .container {
+    .top-nav .container {
       padding: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .header-bar h1 {
-      margin: 0;
-      font-size: 1.3rem;
-    }
-    .nav-link {
-      color: #fff;
-      text-decoration: underline;
+    .top-nav a {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
       font-size: 0.9rem;
     }
     .code-grid {
@@ -39,21 +36,22 @@
       .code-grid { grid-template-columns: 1fr; }
     }
     pre {
-      background: #1e1e1e;
-      color: #d4d4d4;
+      background: #0f172a;
+      color: #e2e8f0;
       padding: 14px;
       border-radius: 6px;
       font-family: Consolas, monospace;
       font-size: 0.85rem;
       overflow-x: auto;
+      border: 1px solid #334155;
     }
-    .badge-step {
+    .badge-pill {
       display: inline-block;
-      background: #e2e8f0;
-      color: #0f172a;
+      background: #fee2e2;
+      color: #b91c1c;
       font-weight: bold;
-      padding: 3px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      border-radius: 999px;
       font-size: 0.8rem;
       margin-bottom: 8px;
     }
@@ -61,107 +59,111 @@
 </head>
 <body>
 
-  <header class="header-bar">
+  <nav class="top-nav">
     <div class="container">
-      <h1>🎯 Chuyển Đổi CSS Sang SASS Theo Chuẩn (7-1 Pattern)</h1>
-      <a href="index.html" class="nav-link">← Quay về Trang Showcase & CLI Guide</a>
+      <div style="font-weight: 700;">CodeGym • SASS Mixins & Variables Lab</div>
+      <a href="index.html">← Quay về Trang Showcase & CLI Guide</a>
     </div>
-  </header>
+  </nav>
 
   <main class="container">
 
-    <!-- Card Giới thiệu & Demo thành quả -->
+    <!-- Thẻ tiêu đề cấp 1 và cấp 2 áp dụng biến $font-large, $font-medium, $text-color -->
+    <h1>🎯 Tiêu Đề Cấp 1: font-size 32px bằng biến $font-large</h1>
+    <h2>Tiêu Đề Cấp 2: font-size 28px bằng biến $font-medium</h2>
+
+    <!-- Card 1: Minh họa thành quả thực tế -->
     <div class="card">
-      <span class="badge-step">Kết quả hiển thị thực tế</span>
-      <h2 class="card__title">Thành Quả Sau Khi Biên Dịch SASS sang CSS</h2>
+      <span class="badge-pill">Thực hành thành công</span>
+      <h2 class="card__title">Thành Quả: .card áp dụng @include box-style</h2>
       <p class="card__text">
-        Trang này đang sử dụng hoàn toàn file <code>css/main.css</code>, được biên dịch từ cấu trúc thư mục SASS module chuẩn:
-        <code>abstracts/</code>, <code>base/</code>, <code>layout/</code>, và <code>components/</code>.
+        Thẻ này nhận style trực tiếp từ <code>@mixin box-style</code> (background: white; padding: 15px; border-radius: 10px; box-shadow: $box-shadow-default).
       </p>
-      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <button class="button">Nút Chính (.button)</button>
-        <button class="button button--secondary">Nút Phụ (.button--secondary)</button>
-        <button class="button button--success">Nút Thành Công (.button--success)</button>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="button">Nút Đỏ (.button) - $primary-color</button>
+        <button class="button button--secondary">Nút Xám (.button--secondary)</button>
+        <button class="button button--success">Nút Xanh (.button--success)</button>
       </div>
     </div>
 
-    <!-- Card So sánh Trước & Sau -->
+    <!-- Card 2: So sánh CSS trước và sau tối ưu -->
     <div class="card">
-      <span class="badge-step">Đối chiếu kỹ thuật</span>
-      <h2 class="card__title">So Sánh: CSS Ban Đầu vs SASS Chuẩn Hóa</h2>
+      <span class="badge-pill">Đối chiếu kỹ thuật</span>
+      <h2 class="card__title">So Sánh: CSS Trước Tối Ưu vs SASS Tối Ưu Bằng Mixin & Biến</h2>
       
       <div class="code-grid">
         <!-- Cột 1: CSS ban đầu -->
         <div>
-          <h4>❌ CSS Ban Đầu (Khó bảo trì, lặp code)</h4>
-          <pre><code>/* styles.css ban đầu */
-body {
-  font-family: Arial, sans-serif;
-  color: #333;
-  background: #f4f4f4;
+          <h4 style="color: #ef4444; margin-top:0;">❌ CSS Trước Khi Tối Ưu (Lặp giá trị, khó đổi theme)</h4>
+          <pre><code>h1 {
+  font-size: 32px;
+  color: #222;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+h2 {
+  font-size: 28px;
+  color: #222;
 }
 
 .button {
-  background: blue;
+  background: red;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
 }
 
 .card {
-  border: 1px solid #ddd;
-  padding: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 }</code></pre>
         </div>
 
-        <!-- Cột 2: Cấu trúc SASS chuẩn -->
+        <!-- Cột 2: SASS sau tối ưu -->
         <div>
-          <h4>✅ SASS Chuẩn Hóa (Tách Module, Biến, Mixin)</h4>
-          <pre><code>// scss/main.scss
-@import "abstracts/variables";
-@import "abstracts/mixins";
-@import "base/global";
-@import "layout/container";
-@import "components/buttons";
-@import "components/cards";
+          <h4 style="color: #10b981; margin-top:0;">✅ SASS Sau Tối Ưu (Biến + Mixins + Tái sử dụng)</h4>
+          <pre><code>// 1. Khai báo biến (abstracts/_variables.scss)
+$primary-color: red;
+$text-color: #222;
+$font-large: 32px;
+$font-medium: 28px;
+$padding-standard: 10px 20px;
+$box-shadow-default: 2px 2px 10px rgba(0,0,0,0.1);
 
-// components/_buttons.scss
-.button {
-  @include button-style($primary-color);
+// 2. Định nghĩa mixins (abstracts/_mixins.scss)
+@mixin button-style($bg-color) {
+  background: $bg-color;
+  color: white;
+  padding: $padding-standard;
+  border-radius: 5px;
 }
 
-// components/_cards.scss
-.card {
-  border: 1px solid $border-color;
-  padding: 20px;
-  @include box-shadow;
-}</code></pre>
+@mixin box-style {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: $box-shadow-default;
+}
+
+// 3. Áp dụng vào Component & Base
+h1 { font-size: $font-large; color: $text-color; }
+h2 { font-size: $font-medium; color: $text-color; }
+.button { @include button-style($primary-color); }
+.card { @include box-style; }</code></pre>
         </div>
       </div>
     </div>
 
-    <!-- Card Cấu trúc thư mục -->
+    <!-- Card 3: Lợi ích đạt được -->
     <div class="card">
-      <span class="badge-step">Kiến trúc thư mục SASS</span>
-      <h2 class="card__title">Cấu Trúc Thư Mục Chuẩn Đã Tạo</h2>
-      <pre><code>📁 scss/
-├── 📁 abstracts/
-│   ├── _variables.scss      # $primary-color, $text-color, $background-color, $border-color, $box-shadow
-│   └── _mixins.scss         # @mixin button-style($bg-color), @mixin box-shadow
-├── 📁 base/
-│   └── _global.scss         # body { font-family, color, background }
-├── 📁 layout/
-│   └── _container.scss      # .container { width: 80%; margin: 0 auto; }
-├── 📁 components/
-│   ├── _buttons.scss        # .button { @include button-style($primary-color); }
-│   └── _cards.scss          # .card { border, padding, @include box-shadow; }
-└── main.scss                # Tập tin tổng hợp nạp tất cả partials</code></pre>
+      <span class="badge-pill">Tổng kết kết quả mong đợi</span>
+      <h2 class="card__title">Kết Quả Đạt Được</h2>
+      <ul style="padding-left: 20px; line-height: 1.8; color: #222;">
+        <li>✔ <strong>CSS trở nên gọn gàng, dễ quản lý hơn</strong>: Không còn lặp lại các giá trị kích thước, mã màu hay cấu hình bóng đổ rải rác trong dự án.</li>
+        <li>✔ <strong>Kiểm soát giao diện tập trung</strong>: Khi thay đổi bảng màu (ví dụ từ đỏ sang xanh) hoặc kích thước typography, chỉ cần cập nhật tại một file <code>_variables.scss</code> duy nhất.</li>
+        <li>✔ <strong>Tái sử dụng linh hoạt</strong>: Mixin <code>button-style($bg-color)</code> cho phép tạo nhanh các biến thể nút bấm mới chỉ bằng một dòng truyền tham số màu.</li>
+      </ul>
     </div>
 
   </main>

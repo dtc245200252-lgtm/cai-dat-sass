@@ -132,6 +132,7 @@ $box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
 @import "abstracts/variables";
 @import "abstracts/mixins";
 @import "base/global";
+@import "base/typography";
 @import "layout/container";
 @import "components/buttons";
 @import "components/cards";
@@ -140,6 +141,27 @@ Biên dịch ra file CSS:
 ```bash
 sass scss/:css/ --watch
 ```
+
+---
+
+## 🎨 6. Tối Ưu CSS Bằng Mixins & Biến (Website Mẫu)
+
+### Bảng đối chiếu biến và mixin đã tạo:
+
+| Thành phần | File SCSS | Mục đích sử dụng |
+| :--- | :--- | :--- |
+| `$primary-color` | `abstracts/_variables.scss` | Màu chủ đạo nút bấm (`red`) |
+| `$text-color` | `abstracts/_variables.scss` | Màu chữ toàn cục (`#222`) |
+| `$font-large`, `$font-medium` | `abstracts/_variables.scss` | Kích thước `h1` (32px), `h2` (28px) |
+| `$padding-standard` | `abstracts/_variables.scss` | Khoảng cách đệm chuẩn (`10px 20px`) |
+| `$box-shadow-default` | `abstracts/_variables.scss` | Cấu hình bóng đổ (`2px 2px 10px rgba(0,0,0,0.1)`) |
+| `@mixin button-style($bg-color)` | `abstracts/_mixins.scss` | Tái sử dụng tạo nút bấm với màu nền tùy chọn |
+| `@mixin box-style` | `abstracts/_mixins.scss` | Tái sử dụng tạo thẻ card (nền trắng, đệm, bo góc, bóng đổ) |
+
+### Kết quả đạt được:
+- ✔ **CSS gọn gàng, giảm thiểu lặp code**.
+- ✔ **Kiểm soát giao diện tập trung**: chỉ cần đổi biến tại `_variables.scss` là toàn bộ màu sắc, kích thước cập nhật theo.
+- ✔ **Tính tái sử dụng cao**: dễ dàng tạo biến thể `.button--secondary`, `.button--success`.
 
 ---
 
