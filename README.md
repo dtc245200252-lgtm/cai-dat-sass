@@ -165,14 +165,36 @@ sass scss/:css/ --watch
 
 ---
 
-## ⚡ 5. Tiện Ích Scripts Trong `package.json`
+## 📐 7. Tái Cấu Trúc Mã CSS Cho Sẵn (`codegym-vn/responsive-grid`)
 
-Bạn cũng có thể chạy trực tiếp thông qua `npm run`:
+Dự án nằm tại thư mục [responsive-grid-sass/](file:///d:/M%E1%BA%B8%20CODE%20GYM%20ALL/H%C6%B0%E1%BB%9Bng%20d%E1%BA%ABn%20c%C3%A0i%20%C4%91%E1%BA%B7t%20SASS%20b%E1%BA%B1ng%20npm%20&%20SASS%20CLI/responsive-grid-sass/):
+- **Phân tích vấn đề ở mã cũ**: Mã nguồn ban đầu lạm dụng quá nhiều inline styles (`style="height:90px;"`, `style="width:25%;"`, mã màu hex lặp lại), tính toán cứng độ rộng cột (`width: 8.33%`).
+- **Giải pháp SASS hiện đại**:
+  1. Tách cấu trúc vào thư mục `responsive-grid-sass/scss/`:
+     - `_variables.scss`: Quản lý số cột (`$grid-columns: 12;`), màu sắc và chiều cao.
+     - `_mixins.scss`: Hàm tính toán độ rộng cột `col-width($span)`.
+     - `_grid.scss`: Vòng lặp SASS `@for $i from 1 through 12` tự động sinh 12 cột `.col-1` đến `.col-12`.
+     - `_layout.scss`: Quy ước đặt tên BEM sạch sẽ (`.layout-header`, `.layout-body`, `.layout-footer`).
+  2. File HTML `responsive-grid-sass/index.html`: Sạch sẽ 100%, không còn bất kỳ inline style nào.
+- **Biên dịch**:
+  ```bash
+  npm run grid:build
+  # hoặc
+  npm run grid:watch
+  ```
+
+---
+
+## ⚡ 8. Tiện Ích Scripts Trong `package.json`
+
+Bạn có thể chạy trực tiếp thông qua `npm run`:
 - `npm run sass:single` : Biên dịch file đơn lẻ `styles.scss` -> `styles.css`.
 - `npm run sass:watch-single` : Bật watch file đơn lẻ.
 - `npm run sass:build` : Biên dịch thư mục `scss/` -> `css/`.
 - `npm run sass:watch` : Bật watch cả thư mục `scss/` -> `css/`.
-- `npm run build` : Biên dịch toàn bộ file một lần.
+- `npm run grid:build` : Biên dịch dự án `responsive-grid-sass`.
+- `npm run grid:watch` : Bật watch dự án `responsive-grid-sass`.
+- `npm run build` : Biên dịch toàn bộ các dự án SCSS trong 1 lệnh duy nhất.
 
 ---
 

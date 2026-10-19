@@ -1,0 +1,101 @@
+// ==========================================
+// responsive-grid-sass/scss/_layout.scss
+// Tái cấu trúc loại bỏ toàn bộ inline styles sang BEM & Nesting SASS
+// ==========================================
+
+@use 'variables' as var;
+@use 'mixins' as mix;
+
+// Lớp giao diện trang web nằm đè lên lưới hướng dẫn
+.layout-overlay {
+  position: absolute;
+  opacity: var.$opacity-overlay;
+  width: auto;
+  left: 8px;
+  right: 10px;
+  z-index: 2;
+}
+
+// 1. Header khu vực trên cùng
+.layout-header {
+  height: var.$height-header;
+
+  &__content {
+    width: 100%;
+    background: var.$color-header;
+    border-right-color: transparent;
+  }
+}
+
+// 2. Thân giữa (Menu trái, nội dung rỗng, Sidebar phải)
+.layout-body {
+  height: var.$height-middle;
+
+  &__nav {
+    width: 25%;
+    background-color: var.$color-white;
+    border: none;
+    padding-top: 15px;
+  }
+
+  &__nav-item {
+    background-color: var.$color-accent;
+    border: none;
+    width: 100%;
+    height: 15%;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__spacer {
+    background-color: var.$color-white;
+    border: none;
+  }
+
+  &__aside {
+    width: 25%;
+    background-color: var.$color-white;
+    border: none;
+    padding-top: 15px;
+  }
+
+  &__aside-item {
+    background-color: var.$color-accent;
+    border: none;
+    width: 100%;
+    height: 92%;
+  }
+}
+
+// 3. Footer dưới cùng
+.layout-footer {
+  height: var.$height-footer;
+
+  &__content {
+    width: 100%;
+    background: var.$color-footer;
+    border-right-color: transparent;
+  }
+}
+
+// 4. Lưới 12 cột mờ làm chuẩn kích thước (Grid Guide)
+.grid-guide {
+  opacity: var.$opacity-grid-bg;
+  z-index: 1;
+
+  .gridwrapper {
+    height: var.$height-grid-bg;
+  }
+
+  .gridcontent {
+    background-color: var.$color-white;
+    border-right: 1px solid var.$color-border-grid;
+
+    &:first-child {
+      border-left: 1px solid var.$color-border-grid;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+// ==========================================
+// responsive-grid-sass/scss/main.scss
+// File điểm vào chính nạp toàn bộ partials cho hệ thống Responsive Grid
+// ==========================================
+
+@use 'variables';
+@use 'mixins';
+@use 'grid';
+@use 'layout';

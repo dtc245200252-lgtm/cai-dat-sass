@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tái Cấu Trúc Responsive Grid (CodeGym) Sang SASS Chuẩn</title>
+  
+  <!-- CSS được biên dịch tự động từ SASS -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    /* Style hỗ trợ khung điều khiển so sánh bên dưới */
+    .dashboard-panel {
+      margin-top: 420px;
+      padding: 30px;
+      background: #ffffff;
+      border-top: 2px solid #e2e8f0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1e293b;
+    }
+    .panel-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .btn-back {
+      display: inline-block;
+      background: #0284c7;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+    @media (max-width: 800px) {
+      .comparison-grid { grid-template-columns: 1fr; }
+    }
+    .code-box {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 16px;
+      border-radius: 8px;
+      font-family: Consolas, monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+    .badge-bad { background: #fee2e2; color: #dc2626; }
+    .badge-good { background: #dcfce7; color: #16a34a; }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       PHẦN GIAO DIỆN CHÍNH (ĐÃ LOẠI BỎ 100% INLINE STYLE RÁC)
+       Áp dụng kiến trúc BEM và các Class biên dịch từ SASS
+       ======================================================== -->
+
+  <!-- Lớp hiển thị nội dung Website -->
+  <div class="layout-overlay">
+    <div class="gridcontainer">
+      
+      <!-- 1. Header (Tím) -->
+      <div class="gridwrapper layout-header">
+        <div class="gridcontent layout-header__content"></div>
+      </div>
+
+      <!-- 2. Thân giữa (Menu trái, khoảng đệm, Sidebar phải) -->
+      <div class="gridwrapper layout-body">
+        <!-- Menu bên trái (25% = 3 cột) -->
+        <div class="gridcontent layout-body__nav">
+          <div class="layout-body__nav-item"></div>
+          <div class="layout-body__nav-item"></div>
+          <div class="layout-body__nav-item"></div>
+          <div class="layout-body__nav-item"></div>
+        </div>
+
+        <!-- 6 cột rỗng đệm ở giữa -->
+        <div class="gridcontent layout-body__spacer"></div>
+        <div class="gridcontent layout-body__spacer"></div>
+        <div class="gridcontent layout-body__spacer"></div>
+        <div class="gridcontent layout-body__spacer"></div>
+        <div class="gridcontent layout-body__spacer"></div>
+        <div class="gridcontent layout-body__spacer"></div>
+
+        <!-- Sidebar bên phải (25% = 3 cột) -->
+        <div class="gridcontent layout-body__aside">
+          <div class="layout-body__aside-item"></div>
+        </div>
+      </div>
+
+      <!-- 3. Footer (Xanh đậm) -->
+      <div class="gridwrapper layout-footer">
+        <div class="gridcontent layout-footer__content"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lớp lưới 12 cột nền mờ chuẩn đo (Grid Guide) -->
+  <div class="gridcontainer grid-guide">
+    <div class="gridwrapper">
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+      <div class="gridcontent"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       PHẦN BẢNG PHÂN TÍCH & ĐỐI CHIẾU KỸ THUẬT TÁI CẤU TRÚC
+       ======================================================== -->
+  <section class="dashboard-panel">
+    <div class="panel-container">
+      <a href="../index.html" class="btn-back">← Quay về Trang Chủ Dự Án</a>
+      
+      <h2>🎯 Báo Cáo Tái Cấu Trúc: CodeGym Responsive Grid</h2>
+      <p style="color: #64748b; font-size: 0.95rem;">
+        Resize cửa sổ trình duyệt để thấy hệ thống Grid phản hồi kích thước linh hoạt, luôn tận dụng 100% không gian hiển thị.
+      </p>
+
+      <div class="comparison-grid">
+        <!-- Cột 1: Mã nguồn cũ -->
+        <div>
+          <span class="badge badge-bad">❌ Mã nguồn cũ (HTML/CSS hỗn tạp)</span>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 8px 0;">
+            - Tràn ngập inline styles: <code>style="height:90px;"</code>, <code>style="width:25%;"</code><br>
+            - Mã màu hex lặp lại nhiều lần<br>
+            - Phụ thuộc vào thuộc tính float thủ công và tính toán cứng <code>width: 8.33%</code>
+          </p>
+          <div class="code-box">
+<pre>&lt;!-- Code cũ ngập tràn style inline --&gt;
+&lt;div style="position:absolute;opacity:0.9;left:8px;"&gt;
+  &lt;div class="gridwrapper" style="height:90px;"&gt;
+    &lt;div class="gridcontent" 
+         style="width:100%;background:#9933cc;"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="gridwrapper" style="height:230px;"&gt;
+    &lt;div class="gridcontent" 
+         style="width:25%;padding-top:15px;"&gt;
+      &lt;div style="background:#33b5e5;height:15%;"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+
+        <!-- Cột 2: Mã nguồn mới -->
+        <div>
+          <span class="badge badge-good">✅ SASS Tái Cấu Trúc Chuẩn BEM & Modules</span>
+          <p style="font-size: 0.88rem; color: #64748b; margin: 8px 0;">
+            - Tách hoàn toàn CSS ra khỏi HTML, 0% inline style<br>
+            - Sử dụng vòng lặp SASS <code>@for $i from 1 through 12</code> sinh ra hệ thống cột tự động<br>
+            - Quản lý tập trung màu sắc và chiều cao tại <code>_variables.scss</code>
+          </p>
+          <div class="code-box">
+<pre>// Vòng lặp tự động sinh 12 cột trong SASS
+@for $i from 1 through $grid-columns {
+  .col-#{$i} {
+    width: math.div($i, $grid-columns) * 100%;
+  }
+}
+
+// BEM layout sạch sẽ
+.layout-header {
+  height: $height-header;
+  &amp;__content {
+    width: 100%;
+    background: $color-header;
+  }
+}</pre>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

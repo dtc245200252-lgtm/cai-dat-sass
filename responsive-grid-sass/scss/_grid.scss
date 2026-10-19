@@ -1,0 +1,41 @@
+// ==========================================
+// responsive-grid-sass/scss/_grid.scss
+// Hệ thống lưới 12 cột tự động sinh ra bằng vòng lặp SASS @for
+// ==========================================
+
+@use 'sass:math';
+@use 'variables' as var;
+@use 'mixins' as mix;
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.gridcontainer {
+  @include mix.container-base;
+  position: relative;
+}
+
+.gridwrapper {
+  overflow: auto;
+  position: relative;
+  height: 250px;
+  @include mix.clearfix;
+}
+
+// Cột chuẩn mặc định (1 cột = 8.33% trong hệ 12 cột)
+.gridcontent {
+  width: math.div(100%, var.$grid-columns);
+  margin: 0;
+  border-right: 1px solid var.$color-border-grey;
+  height: 100%;
+  float: left;
+  background-color: var.$color-bg-light;
+}
+
+// Vòng lặp SASS @for tự động tạo 12 lớp cột .col-1 đến .col-12
+@for $i from 1 through var.$grid-columns {
+  .col-#{$i} {
+    width: math.div($i, var.$grid-columns) * 100%;
+  }
+}

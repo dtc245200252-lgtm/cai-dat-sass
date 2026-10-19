@@ -1,0 +1,34 @@
+// ==========================================
+// responsive-grid-sass/scss/_mixins.scss
+// Mixins hỗ trợ tính toán độ rộng cột, clearfix và responsive
+// ==========================================
+
+@use 'sass:math';
+@use 'variables' as var;
+
+// Tính % chiều rộng cột động trong SASS
+@function col-width($span) {
+  @return math.div($span, var.$grid-columns) * 100%;
+}
+
+// Mixin gán độ rộng cho cột
+@mixin make-col($span) {
+  width: col-width($span);
+  float: left;
+}
+
+// Mixin Clearfix cho container float
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+// Mixin căn giữa & giới hạn khung
+@mixin container-base {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}

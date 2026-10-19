@@ -1,0 +1,27 @@
+// ==========================================
+// responsive-grid-sass/scss/_variables.scss
+// Khai báo biến cho hệ thống Grid 12 cột và màu sắc layout
+// ==========================================
+
+// Cấu hình Grid
+$grid-columns: 12;
+$grid-gutter: 0px;
+
+// Bảng màu giao diện mẫu CodeGym Responsive Grid
+$color-header: #9933cc;      // Tím Header
+$color-accent: #33b5e5;      // Xanh dương Menu items & Sidebar
+$color-footer: #0099cc;      // Xanh đậm Footer
+$color-white: #ffffff;
+$color-bg-light: #f1f1f1;
+$color-border-grid: #000000;
+$color-border-grey: #808080;
+
+// Chiều cao các khu vực
+$height-header: 90px;
+$height-middle: 230px;
+$height-footer: 50px;
+$height-grid-bg: 370px;
+
+// Độ trong suốt cho lưới mẫu
+$opacity-overlay: 0.9;
+$opacity-grid-bg: 0.1;

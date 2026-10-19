@@ -1,0 +1,158 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.gridcontainer {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.gridwrapper {
+  overflow: auto;
+  position: relative;
+  height: 250px;
+}
+.gridwrapper::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.gridcontent {
+  width: 8.3333333333%;
+  margin: 0;
+  border-right: 1px solid #808080;
+  height: 100%;
+  float: left;
+  background-color: #f1f1f1;
+}
+
+.col-1 {
+  width: 8.3333333333%;
+}
+
+.col-2 {
+  width: 16.6666666667%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333%;
+}
+
+.col-5 {
+  width: 41.6666666667%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.3333333333%;
+}
+
+.col-8 {
+  width: 66.6666666667%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.3333333333%;
+}
+
+.col-11 {
+  width: 91.6666666667%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.layout-overlay {
+  position: absolute;
+  opacity: 0.9;
+  width: auto;
+  left: 8px;
+  right: 10px;
+  z-index: 2;
+}
+
+.layout-header {
+  height: 90px;
+}
+.layout-header__content {
+  width: 100%;
+  background: #9933cc;
+  border-right-color: transparent;
+}
+
+.layout-body {
+  height: 230px;
+}
+.layout-body__nav {
+  width: 25%;
+  background-color: #ffffff;
+  border: none;
+  padding-top: 15px;
+}
+.layout-body__nav-item {
+  background-color: #33b5e5;
+  border: none;
+  width: 100%;
+  height: 15%;
+  margin-bottom: 10px;
+}
+.layout-body__nav-item:last-child {
+  margin-bottom: 0;
+}
+.layout-body__spacer {
+  background-color: #ffffff;
+  border: none;
+}
+.layout-body__aside {
+  width: 25%;
+  background-color: #ffffff;
+  border: none;
+  padding-top: 15px;
+}
+.layout-body__aside-item {
+  background-color: #33b5e5;
+  border: none;
+  width: 100%;
+  height: 92%;
+}
+
+.layout-footer {
+  height: 50px;
+}
+.layout-footer__content {
+  width: 100%;
+  background: #0099cc;
+  border-right-color: transparent;
+}
+
+.grid-guide {
+  opacity: 0.1;
+  z-index: 1;
+}
+.grid-guide .gridwrapper {
+  height: 370px;
+}
+.grid-guide .gridcontent {
+  background-color: #ffffff;
+  border-right: 1px solid #000000;
+}
+.grid-guide .gridcontent:first-child {
+  border-left: 1px solid #000000;
+}
+
+/*# sourceMappingURL=main.css.map */

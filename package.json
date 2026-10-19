@@ -8,7 +8,9 @@
     "sass:watch-single": "sass styles.scss styles.css --watch",
     "sass:build": "sass scss/:css/",
     "sass:watch": "sass scss/:css/ --watch",
-    "build": "npm run sass:single && npm run sass:build"
+    "grid:build": "sass responsive-grid-sass/scss/:responsive-grid-sass/css/",
+    "grid:watch": "sass responsive-grid-sass/scss/:responsive-grid-sass/css/ --watch",
+    "build": "npm run sass:single && npm run sass:build && npm run grid:build"
   },
   "keywords": ["sass", "scss", "css", "cli", "npm", "tutorial"],
   "author": "CodeGym Student",
