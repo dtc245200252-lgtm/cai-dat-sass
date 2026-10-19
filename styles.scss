@@ -1,0 +1,38 @@
+// ==========================================
+// File: styles.scss (Biên dịch đơn lẻ)
+// Ví dụ cơ bản: Biến, Lồng nhau (Nesting), Toán tử
+// ==========================================
+
+$primary-color: #ff3366;
+$accent-color: #7928ca;
+$bg-dark: #0f172a;
+$text-light: #f8fafc;
+$border-radius-base: 12px;
+
+.single-demo-card {
+  background: linear-gradient(135deg, rgba($primary-color, 0.15), rgba($accent-color, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-base;
+  padding: 24px;
+  color: $text-light;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba($primary-color, 0.5);
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+  }
+}

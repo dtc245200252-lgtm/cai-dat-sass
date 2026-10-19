@@ -1,0 +1,9 @@
+// ==========================================
+// SCSS Main Entry Point: scss/main.scss
+// Tổng hợp các module partials: variables, mixins, base, components
+// ==========================================
+
+@use 'variables';
+@use 'mixins';
+@use 'base';
+@use 'components';

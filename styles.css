@@ -1,0 +1,26 @@
+.single-demo-card {
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(121, 40, 202, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+.single-demo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 51, 102, 0.5);
+}
+.single-demo-card .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff3366;
+  margin-bottom: 8px;
+}
+.single-demo-card .description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+/*# sourceMappingURL=styles.css.map */

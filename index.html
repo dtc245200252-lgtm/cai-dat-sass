@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hướng Dẫn Cài Đặt SASS Bằng npm & SASS CLI | CodeGym</title>
+  <meta name="description" content="Thực hành cài đặt Node.js, npm, SASS CLI, biên dịch SCSS sang CSS và sử dụng chế độ Watch.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome CDN for clean icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Compiled CSS from SASS -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- Single SCSS Demo compiled file -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Header / Navbar -->
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fa-brands fa-sass"></i>
+        </div>
+        <div class="brand-text">
+          <h1>SASS / SCSS Mastering</h1>
+          <span>CodeGym Web Development</span>
+        </div>
+      </div>
+      <div class="nav-badges">
+        <span class="badge node" title="Node.js version đã xác nhận">
+          <span class="dot"></span> Node.js v24.18.0
+        </span>
+        <span class="badge npm" title="npm version đã xác nhận">
+          <span class="dot"></span> npm v11.16.0
+        </span>
+        <span class="badge sass" title="Dart Sass CLI đã cài đặt">
+          <span class="dot"></span> Sass 1.105.2
+        </span>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-tag">
+        <i class="fa-solid fa-terminal"></i> SASS CLI & npm Workflow Guide
+      </div>
+      <h1 class="hero-title">
+        Tối Ưu CSS Hiện Đại Với <br>
+        <span class="gradient-text">SASS & SASS CLI</span>
+      </h1>
+      <p class="hero-subtitle">
+        Khám phá quy trình làm việc chuẩn công nghiệp: Quản lý biến, lồng cấu trúc (nesting), 
+        chia module (@use / partials) và tự động biên dịch SCSS sang CSS thời gian thực với chế độ <code>--watch</code>.
+      </p>
+      <div class="hero-actions">
+        <a href="#commands" class="btn-primary">
+          <i class="fa-solid fa-play"></i> Bảng Lệnh CLI
+        </a>
+        <a href="#lab" class="btn-secondary">
+          <i class="fa-solid fa-code-compare"></i> So Sánh SCSS vs CSS
+        </a>
+        <a href="#showcase" class="btn-secondary">
+          <i class="fa-solid fa-layer-group"></i> Component Showcase
+        </a>
+      </div>
+    </section>
+
+    <!-- Command Cheat Sheet Section -->
+    <section id="commands" class="section-title-wrap">
+      <h2><span class="icon-badge">⚡</span> Các Lệnh SASS CLI Thao Tác Chuẩn</h2>
+      <p>Bấm nút Copy bên phải để sao chép trực tiếp lệnh vào Terminal của bạn</p>
+    </section>
+
+    <div class="commands-grid">
+      <!-- Card 1 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-download text-indigo"></i> Cài đặt SASS Toàn Cục</span>
+          <span class="cmd-step">Bước 1</span>
+        </div>
+        <p class="cmd-desc">Cài đặt package Sass phiên bản Dart Sass thông qua npm ở phạm vi global để dùng ở bất kỳ thư mục nào.</p>
+        <div class="terminal-box">
+          <code id="cmd1">npm install -g sass</code>
+          <button class="copy-btn" onclick="copyCode('cmd1')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-check-circle text-green"></i> Kiểm tra phiên bản SASS</span>
+          <span class="cmd-step">Bước 2</span>
+        </div>
+        <p class="cmd-desc">Kiểm tra xem SASS CLI đã được nhận diện trong hệ thống PATH và hiển thị phiên bản hiện hành.</p>
+        <div class="terminal-box">
+          <code id="cmd2">sass --version</code>
+          <button class="copy-btn" onclick="copyCode('cmd2')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-file-code text-pink"></i> Biên dịch 1 tệp SCSS đơn lẻ</span>
+          <span class="cmd-step">Bước 3</span>
+        </div>
+        <p class="cmd-desc">Chuyển đổi trực tiếp từ file <code>styles.scss</code> thành file <code>styles.css</code> sẵn sàng nhúng vào HTML.</p>
+        <div class="terminal-box">
+          <code id="cmd3">sass styles.scss styles.css</code>
+          <button class="copy-btn" onclick="copyCode('cmd3')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-eye text-cyan"></i> Chế độ Watch (Tự động biên dịch)</span>
+          <span class="cmd-step">Bước 4</span>
+        </div>
+        <p class="cmd-desc">Tự động lắng nghe thay đổi trong file SCSS và cập nhật CSS ngay lập tức khi bạn nhấn Save (Ctrl+S).</p>
+        <div class="terminal-box">
+          <code id="cmd4">sass styles.scss styles.css --watch</code>
+          <button class="copy-btn" onclick="copyCode('cmd4')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-folder-tree text-amber"></i> Biên dịch cả thư mục SCSS</span>
+          <span class="cmd-step">Bước 5</span>
+        </div>
+        <p class="cmd-desc">Lắng nghe và chuyển đổi toàn bộ cấu trúc dự án từ thư mục <code>scss/</code> sang thư mục <code>css/</code>.</p>
+        <div class="terminal-box">
+          <code id="cmd5">sass scss/:css/ --watch</code>
+          <button class="copy-btn" onclick="copyCode('cmd5')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="cmd-card">
+        <div class="cmd-header">
+          <span class="cmd-name"><i class="fa-solid fa-shield-halved text-rose"></i> Sửa lỗi ExecutionPolicy PowerShell</span>
+          <span class="cmd-step">Gỡ lỗi</span>
+        </div>
+        <p class="cmd-desc">Nếu gặp lỗi bị chặn script trên Windows PowerShell, mở PowerShell bằng Administrator và chạy:</p>
+        <div class="terminal-box">
+          <code id="cmd6">Set-ExecutionPolicy Unrestricted -Scope CurrentUser</code>
+          <button class="copy-btn" onclick="copyCode('cmd6')"><i class="fa-regular fa-copy"></i> Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Code Lab SCSS vs CSS Comparison -->
+    <section id="lab" class="section-title-wrap">
+      <h2><span class="icon-badge">🔄</span> Minh Họa Trực Quan: SCSS Nguồn vs CSS Kết Quả</h2>
+      <p>Xem cách SASS giải quyết bài toán lồng nhau (nesting), biến (variables), và tính toán tự động</p>
+    </section>
+
+    <div class="code-lab-grid">
+      <div class="code-box">
+        <div class="box-top">
+          <span class="file-name scss-type"><i class="fa-brands fa-sass"></i> styles.scss (Mã nguồn SCSS)</span>
+          <div class="window-dots"><span></span><span></span><span></span></div>
+        </div>
+        <pre><code>$primary-color: #ff3366;
+$accent-color: #7928ca;
+$text-light: #f8fafc;
+$border-radius-base: 12px;
+
+.single-demo-card {
+  background: linear-gradient(135deg, 
+    rgba($primary-color, 0.15), 
+    rgba($accent-color, 0.15)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: $border-radius-base;
+  padding: 24px;
+  color: $text-light;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    border-color: rgba($primary-color, 0.5);
+  }
+
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+}</code></pre>
+      </div>
+
+      <div class="code-box">
+        <div class="box-top">
+          <span class="file-name css-type"><i class="fa-brands fa-css3-alt"></i> styles.css (Biên dịch bằng SASS CLI)</span>
+          <div class="window-dots"><span></span><span></span><span></span></div>
+        </div>
+        <pre><code>.single-demo-card {
+  background: linear-gradient(135deg, rgba(255, 51, 102, 0.15), rgba(121, 40, 202, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+.single-demo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 51, 102, 0.5);
+}
+.single-demo-card .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff3366;
+  margin-bottom: 8px;
+}
+/*# sourceMappingURL=styles.css.map */</code></pre>
+      </div>
+    </div>
+
+    <!-- Live Rendered Single Demo Card (Proving styles.css works) -->
+    <div style="margin-bottom: 50px;">
+      <h3 style="margin-bottom: 14px; font-size: 1.1rem; color: #a5b4fc;">
+        <i class="fa-solid fa-vial"></i> Thẻ hiển thị trực tiếp bằng <code>styles.css</code> (Biên dịch từ <code>styles.scss</code>):
+      </h3>
+      <div class="single-demo-card">
+        <div class="title">🎉 Single File SCSS Compilation Successful!</div>
+        <div class="description">
+          Thẻ này đang nhận style trực tiếp từ file <strong>styles.css</strong> được tạo ra bởi lệnh <code>sass styles.scss styles.css</code>.
+          Hãy di chuột lên thẻ này để kiểm tra hiệu ứng <code>:hover</code> và viền gradient bóng đổ đã được biên dịch hoàn hảo.
+        </div>
+      </div>
+    </div>
+
+    <!-- Component Showcase Section (Modular scss/ structure) -->
+    <section id="showcase" class="section-title-wrap">
+      <h2><span class="icon-badge">✨</span> Tính Năng Nổi Bật Của SASS Trong Cấu Trúc Thư Mục</h2>
+      <p>Được xây dựng từ cấu trúc module <code>scss/_variables.scss</code>, <code>scss/_mixins.scss</code>, <code>scss/_components.scss</code></p>
+    </section>
+
+    <div class="demo-cards-grid">
+      <div class="feature-card">
+        <div class="card-icon"><i class="fa-solid fa-shapes"></i></div>
+        <h3>Variables & Color Token</h3>
+        <p>Quản lý tập trung mã màu, kích thước font, border-radius tại <code>_variables.scss</code> giúp việc đổi theme hoặc sửa đổi dễ dàng trong nháy mắt.</p>
+        <span class="tag-pill">#variables</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>Mixins & Reusability</h3>
+        <p>Tạo các hàm CSS tái sử dụng như <code>@mixin flex-center</code>, <code>@mixin glass-panel</code>, và <code>@mixin responsive</code> tiết kiệm hàng trăm dòng code lặp lại.</p>
+        <span class="tag-pill">#mixins</span>
+      </div>
+
+      <div class="feature-card">
+        <div class="card-icon"><i class="fa-solid fa-sitemap"></i></div>
+        <h3>Modern @use & Partials</h3>
+        <p>Sử dụng tiền tố gạch dưới <code>_filename.scss</code> để chia nhỏ kiến trúc mã nguồn sạch sẽ, không tạo file css rác, nạp bằng chuẩn <code>@use</code> hiện đại.</p>
+        <span class="tag-pill">#modular</span>
+      </div>
+    </div>
+
+    <!-- Footer & Git / GitHub Push Instructions -->
+    <footer class="site-footer">
+      <div class="git-guide-box">
+        <h4><i class="fa-brands fa-github"></i> Hướng dẫn đưa toàn bộ mã nguồn lên GitHub</h4>
+        <pre><code># 1. Khởi tạo Git repository
+git init
+
+# 2. Thêm tất cả file vào staging
+git add .
+
+# 3. Tạo commit đầu tiên
+git commit -m "feat: complete SASS installation with npm, SASS CLI and modular SCSS architecture"
+
+# 4. Đổi nhánh chính sang main
+git branch -M main
+
+# 5. Thêm link repository GitHub của bạn (tạo repo mới trên github.com)
+git remote add origin https://github.com/&lt;your-username&gt;/&lt;your-repo-name&gt;.git
+
+# 6. Đẩy mã nguồn lên GitHub
+git push -u origin main</code></pre>
+      </div>
+
+      <p>© 2026 CodeGym Vietnam - Hướng Dẫn Cài Đặt & Thực Hành SASS CLI bằng npm</p>
+    </footer>
+
+  </div>
+
+  <!-- Toast Notification Script for Copying Code -->
+  <div id="toast" style="display:none; position:fixed; bottom:24px; right:24px; background:#10b981; color:#fff; padding:12px 20px; border-radius:10px; font-weight:600; box-shadow:0 10px 25px rgba(0,0,0,0.5); z-index:9999; animation: slideIn 0.3s ease;">
+    <i class="fa-solid fa-circle-check"></i> Đã sao chép lệnh vào clipboard!
+  </div>
+
+  <script>
+    function copyCode(id) {
+      const codeElement = document.getElementById(id);
+      if (!codeElement) return;
+      navigator.clipboard.writeText(codeElement.innerText).then(() => {
+        const toast = document.getElementById('toast');
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 2200);
+      });
+    }
+  </script>
+</body>
+</html>

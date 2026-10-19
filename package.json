@@ -1,0 +1,19 @@
+{
+  "name": "sass-npm-cli-guide",
+  "version": "1.0.0",
+  "description": "Hướng dẫn cài đặt và sử dụng SASS bằng npm & SASS CLI - CodeGym",
+  "main": "index.html",
+  "scripts": {
+    "sass:single": "sass styles.scss styles.css",
+    "sass:watch-single": "sass styles.scss styles.css --watch",
+    "sass:build": "sass scss/:css/",
+    "sass:watch": "sass scss/:css/ --watch",
+    "build": "npm run sass:single && npm run sass:build"
+  },
+  "keywords": ["sass", "scss", "css", "cli", "npm", "tutorial"],
+  "author": "CodeGym Student",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.105.2"
+  }
+}
