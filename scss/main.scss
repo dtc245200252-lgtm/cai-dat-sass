@@ -1,9 +1,18 @@
 // ==========================================
 // SCSS Main Entry Point: scss/main.scss
-// Tổng hợp các module partials: variables, mixins, base, components
+// Import tất cả partials theo chuẩn cấu trúc SASS 7-1 pattern
 // ==========================================
 
-@use 'variables';
-@use 'mixins';
-@use 'base';
-@use 'components';
+// 1. Abstracts (Biến & Mixins)
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+// 2. Base (Reset, Typography, Global Styles)
+@import "base/global";
+
+// 3. Layout (Container, Grid)
+@import "layout/container";
+
+// 4. Components (Buttons, Cards)
+@import "components/buttons";
+@import "components/cards";

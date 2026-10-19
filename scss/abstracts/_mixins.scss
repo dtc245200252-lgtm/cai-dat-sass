@@ -1,0 +1,31 @@
+// ==========================================
+// abstracts/_mixins.scss
+// Định nghĩa các mixin để tái sử dụng giao diện
+// ==========================================
+
+@mixin button-style($bg-color) {
+  background: $bg-color;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+
+  &:hover {
+    filter: brightness(1.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin box-shadow {
+  box-shadow: $box-shadow;
+}

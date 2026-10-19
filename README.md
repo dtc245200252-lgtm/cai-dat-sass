@@ -60,26 +60,85 @@ sass scss/:css/ --watch
 
 ---
 
-## 📂 4. Cấu Trúc Thư Mục Dự Án
+## 📂 4. Cấu Trúc Thư Mục Dự Án Chuẩn SASS (7-1 Pattern)
 
 ```text
 📁 Hướng dẫn cài đặt SASS bằng npm & SASS CLI/
 ├── 📄 index.html              # Trang demo giao diện trực quan, bảng lệnh & showcase
+├── 📄 demo-standard.html      # Trang demo thành quả chuyển đổi CSS sang SASS chuẩn
 ├── 📄 package.json            # Quản lý script biên dịch npm
 ├── 📄 styles.scss             # File SCSS thực hành biên dịch đơn lẻ
 ├── 📄 styles.css              # File CSS xuất xưởng từ styles.scss
 ├── 📄 styles.css.map          # Sourcemap hỗ trợ debug DevTools
-├── 📁 scss/                   # Kiến trúc SASS Module theo chuẩn mới (@use)
-│   ├── 📄 _variables.scss     # Khai báo mã màu Neon, font chữ, shadow, border-radius
-│   ├── 📄 _mixins.scss        # Mixin Flexbox, Glassmorphism, Responsive breakpoint
-│   ├── 📄 _base.scss          # Reset CSS và thiết lập typography, container
-│   ├── 📄 _components.scss    # Styling thẻ Card, Button, Navbar, Badges
-│   └── 📄 main.scss           # File trung tâm import các partials
+├── 📁 original-css/           # Thư mục lưu file CSS ban đầu để đối chiếu
+│   └── 📄 styles.css
+├── 📁 scss/                   # Kiến trúc SASS Module chuẩn (Abstracts, Base, Layout, Components)
+│   ├── 📁 abstracts/
+│   │   ├── 📄 _variables.scss # Biến màu sắc, shadow, font, border
+│   │   └── 📄 _mixins.scss    # Mixin button-style, box-shadow tái sử dụng
+│   ├── 📁 base/
+│   │   └── 📄 _global.scss    # Cấu hình body toàn cục
+│   ├── 📁 layout/
+│   │   └── 📄 _container.scss # Layout .container căn giữa
+│   ├── 📁 components/
+│   │   ├── 📄 _buttons.scss   # Component .button tái sử dụng mixin
+│   │   └── 📄 _cards.scss     # Component .card kèm box-shadow và BEM nesting
+│   └── 📄 main.scss           # File trung tâm import tất cả partials
 ├── 📁 css/                    # Thư mục đích nhận output từ scss/
 │   ├── 📄 main.css            # File CSS hoàn chỉnh
 │   └── 📄 main.css.map        # Sourcemap của main.css
 ├── 📄 .gitignore              # Bỏ qua node_modules và file tạm
 └── 📄 README.md               # Tài liệu chi tiết hướng dẫn thực hành
+```
+
+---
+
+## 🎯 5. Quy Trình Chuyển Đổi CSS Sang SASS Chuẩn
+
+### Bước 1: Khảo sát CSS ban đầu
+Các đoạn CSS truyền thống thường bị lặp giá trị màu sắc, padding, box-shadow và không có khả năng lồng nhau (nesting).
+
+### Bước 2: Tách biến tại `scss/abstracts/_variables.scss`
+```scss
+$primary-color: #0056b3;
+$text-color: #333;
+$background-color: #f4f4f4;
+$border-color: #ddd;
+$box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+```
+
+### Bước 3: Tạo Mixins tại `scss/abstracts/_mixins.scss`
+```scss
+@mixin button-style($bg-color) {
+  background: $bg-color;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+@mixin box-shadow {
+  box-shadow: $box-shadow;
+}
+```
+
+### Bước 4: Viết các partials theo nhiệm vụ
+- `base/_global.scss`: Thiết lập style chung cho `body`.
+- `layout/_container.scss`: Khung layout `.container`.
+- `components/_buttons.scss`: Áp dụng `@include button-style($primary-color)`.
+- `components/_cards.scss`: Áp dụng `@include box-shadow` và cấu trúc BEM nesting.
+
+### Bước 5: Nạp tất cả vào `scss/main.scss`
+```scss
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "base/global";
+@import "layout/container";
+@import "components/buttons";
+@import "components/cards";
+```
+Biên dịch ra file CSS:
+```bash
+sass scss/:css/ --watch
 ```
 
 ---

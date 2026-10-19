@@ -1,0 +1,16 @@
+// ==========================================
+// components/_buttons.scss
+// Component nút bấm tái sử dụng mixin button-style
+// ==========================================
+
+.button {
+  @include button-style($primary-color);
+
+  &--secondary {
+    @include button-style(#6c757d);
+  }
+
+  &--success {
+    @include button-style(#28a745);
+  }
+}
